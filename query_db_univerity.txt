@@ -1,0 +1,28 @@
+select * from students where year(date_of_birth) = 1990;
+
+select * from courses where cfu > 10;
+
+select * from students where TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) > 30;
+
+select * from courses where period = "I semestre" and year = 1;
+
+select * from exams where date = '2020-06-20' and hour > '14:00:00';
+
+select id from departments;
+
+select * from teachers where phone is null;
+
+select year(enrolment_date), count(*) as num_students from students
+group by year(enrolment_date)
+order by year(enrolment_date);
+
+select office_address, count(*) as teachers from teachers
+group by office_address;
+
+select exam_id, avg(vote) as media_voto
+from exam_student
+group by (exam_id);
+
+select department_id, count(*) as courses
+from degrees
+group by(department_id);
