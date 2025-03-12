@@ -1,0 +1,29 @@
+select * from students as s
+join degrees as d on s.degree_id = d.id
+where d.name like "Corso di Laurea in Economia";
+
+select * from degrees as deg
+join departments as dep on deg.department_id = dep.id
+where deg.level = 'magistrale' and dep.name = 'dipartimento di neuroscienze';
+
+select * from courses as c
+join course_teacher as c_t on c.id = c_t.course_id
+join teachers as t on t.id = c_t.teacher_id
+where t.id = 44;
+
+select * from students as s
+join degrees as deg on deg.id = s.degree_id
+join departments as dep on dep.id = deg.department_id
+order by s.surname, s.name;
+
+select * from degrees as deg
+join courses as c on deg.id = c.degree_id
+join course_teacher as ct on ct.course_id = c.id
+join teachers as t on t.id = ct.teacher_id;
+
+select distinct t.surname, t.name from departments as dep
+join degrees as deg on dep.id = deg.department_id
+join courses as c on deg.id = c.degree_id
+join course_teacher as ct on ct.course_id = c.id
+join teachers as t on t.id = ct.teacher_id
+where dep.name = 'Dipartimento di Matematica';
